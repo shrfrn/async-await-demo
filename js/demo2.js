@@ -12,11 +12,11 @@ function ask() {
 }
 
 function askUser(title = 'Sure?') {
-    return Swal.fire({
-        title,
-        showDenyButton: true,
-    }).then(({ value }) => {
-        if (!value) throw new Error('User Canceled!')
-        return value
-    })
+    const options = { title, showDenyButton: true }
+    
+    return Swal.fire(options)
+        .then(({ value }) => {
+            if (!value) throw new Error('User Canceled!')
+            return value
+        })
 }
