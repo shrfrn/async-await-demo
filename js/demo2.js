@@ -1,22 +1,14 @@
-const prm1 = Promise.resolve(18)
-const prm2 = askUser()
-const prm3 = Promise.resolve(11)
+'use strict'
 
-const prms = [prm1, prm2, prm3]
-
-ask()
-function ask() {
-    Promise.all(prms)
-        .then(values => console.log('Values', values))
+function runDemo() {
+    delay(1500)
+        .then(x => console.log('After time', x))
     
 }
 
-function askUser(title = 'Sure?') {
-    const options = { title, showDenyButton: true }
-    
-    return Swal.fire(options)
-        .then(({ value }) => {
-            if (!value) throw new Error('User Canceled!')
-            return value
-        })
+function delay(t) {
+    const prm = new Promise((resolve, reject) => {
+        setTimeout(resolve, t, t)
+    })
+    return prm
 }
