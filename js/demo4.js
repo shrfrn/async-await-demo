@@ -1,15 +1,15 @@
 'use strict'
 
-const prm1 = Promise.resolve(18)
-const prm2 = askUser()
-const prm3 = Promise.resolve(11)
-
-const prms = [prm1, prm2, prm3]
-
 function runDemo() {
+    const prm1 = Promise.resolve(18)
+    const prm2 = askUser()
+    const prm3 = Promise.resolve(11)
+    
+    const prms = [prm1, prm2, prm3]
+    
     Promise.all(prms)
         .then(values => console.log('Values', values))
-    
+        .catch(() => console.log('User said no!'))
 }
 
 function askUser(title = 'Sure?') {
